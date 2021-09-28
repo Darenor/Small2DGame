@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - OutOfLevel
+  - Enemy
+  - Interactable
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Creatures
+  - Collectables
+  - Checkers
+  - Ground
+  - BG
+  - Interactables
+  - Trash
+  - Wall
+  - Hero
+  - Enemies
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 1461421229
+    locked: 0
+  - name: Trees
+    uniqueID: 4163860971
+    locked: 0
+  - name: Ground
+    uniqueID: 166039917
+    locked: 0
+  - name: Creatures
+    uniqueID: 2346943883
+    locked: 0
+  - name: Components
+    uniqueID: 3163486941
+    locked: 0
+  - name: TileMap
+    uniqueID: 2291760297
+    locked: 0
+  - name: Grass
+    uniqueID: 1977726343
+    locked: 0
