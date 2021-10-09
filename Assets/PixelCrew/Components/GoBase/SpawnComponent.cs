@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PixelCrew.Utils;
 using UnityEngine;
 
 namespace PixelCrew
@@ -13,8 +14,8 @@ namespace PixelCrew
         [ContextMenu("Spawn")]
         public void Spawn()
         {
-           
-            var instance = Instantiate(_prefab, _target.position, Quaternion.identity);
+
+            var instance = SpawnUtils.Spawn(_prefab, _target.position);
             
             var scale = _target.lossyScale;
             scale.x *= _invertXScale ? -1 : 1;
@@ -22,6 +23,10 @@ namespace PixelCrew
             instance.SetActive(true);
         }
 
+        public void SetPrefab(GameObject prefab)
+        {
+            _prefab = prefab;   
+        }
         
     }
 

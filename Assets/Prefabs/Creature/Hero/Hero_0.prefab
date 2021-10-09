@@ -1,5 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &125508884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 125508887}
+  - component: {fileID: 125508886}
+  m_Layer: 16
+  m_Name: AudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &125508887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125508884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8165533474934428445}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &125508886
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125508884}
+  m_Enabled: 1
 --- !u!1 &926241803
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131581819120495995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.477, z: 0}
+  m_LocalPosition: {x: 0, y: 0.641, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8165533474934428445}
@@ -215,10 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07edb424ea6c50f4089b751deb6f8af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sectorAngle: 220
+  _sectorAngle: 200
   _sectorRotation: 0
-  _waitTime: 0.1
-  _speed: 3
+  _waitTime: 0.2
+  _speed: 5
 --- !u!1 &2693006533440841448
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +269,7 @@ GameObject:
   - component: {fileID: 5284907011091067929}
   - component: {fileID: 6148935555813257067}
   m_Layer: 16
-  m_Name: ThrowSwordSpawnPosition
+  m_Name: ThrowSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -244,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2693006533440841448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.359, y: -0.194, z: 0}
+  m_LocalPosition: {x: 0.359, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8165533474934428445}
@@ -443,6 +482,7 @@ MonoBehaviour:
     m_Bits: 196407
   _tags:
   - Enemy
+  - Player
   _onOverlap:
     m_PersistentCalls:
       m_Calls:
@@ -534,6 +574,7 @@ GameObject:
   - component: {fileID: 248487871}
   - component: {fileID: 6283299035039355179}
   - component: {fileID: 8175999723904254618}
+  - component: {fileID: 1793167612}
   m_Layer: 16
   m_Name: Hero_0
   m_TagString: Player
@@ -562,6 +603,7 @@ Transform:
   - {fileID: 1022527140555033730}
   - {fileID: 5284907011091067929}
   - {fileID: 2091056272268058539}
+  - {fileID: 125508887}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -603,7 +645,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1948023413
   m_SortingLayer: 4
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -6146700129834819302, guid: 6368ef733c40da842acf07ca5f3d424d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -660,10 +702,11 @@ MonoBehaviour:
   _armed: {fileID: 9100000, guid: 03ef5fbd8f0fee94eba99b75cca9bcc4, type: 2}
   _disarmed: {fileID: 9100000, guid: 7219440e6a62b3443b8a7f676a28e575, type: 2}
   _superThrowCooldown:
-    _value: 0
-  _superThrowParticles: 0
-  _superThrowDelay: 0
+    _value: 1
+  _superThrowParticles: 3
+  _superThrowDelay: 0.2
   _hitDrop: {fileID: 7459219148781886901}
+  _throwSpawner: {fileID: 6148935555813257067}
   _session: {fileID: 0}
 --- !u!114 &8165533474934428440
 MonoBehaviour:
@@ -776,11 +819,26 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8165533474934428446}
-        m_MethodName: OnUse
+        m_MethodName: OnNextItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7fec3fa9-38a1-46e3-a514-2408bce72dc2
+    m_ActionName: Hero/Use[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -860,6 +918,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1793167612}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hurt
+          m_BoolArgument: 0
+        m_CallState: 2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -930,6 +999,27 @@ MonoBehaviour:
     Component: {fileID: 6148935555813257067}
   - Id: Slash
     Component: {fileID: 928056750977144794}
+--- !u!114 &1793167612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8165533474934428435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa973f829cfe734abe61d9f4637a049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - _id: Hurt
+    _clip: {fileID: 8300000, guid: f1863f2b6ede5a349bb1a2bd1a227182, type: 3}
+  - _id: Jump
+    _clip: {fileID: 8300000, guid: aefbf8fc2eb1bc8478db9d7e07cfb327, type: 3}
+  - _id: Melee
+    _clip: {fileID: 8300000, guid: 5e027ddb86d0c394ba7ade900fbfa69d, type: 3}
+  - _id: Range
+    _clip: {fileID: 8300000, guid: 453de1e5e871748468bee19bce8a2f8e, type: 3}
 --- !u!1 &8198990742932858390
 GameObject:
   m_ObjectHideFlags: 0

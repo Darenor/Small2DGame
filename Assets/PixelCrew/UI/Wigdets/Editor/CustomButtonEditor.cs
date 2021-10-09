@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using UnityEditor;
-using UnityEngine;
 using UnityEditor.UI;
 
-namespace PixelCrew.UI.Wigets.Editor
+namespace PixelCrew.UI.Widgets.Editor
 {
 
     [CustomEditor(typeof(CustomButton), true)]
@@ -21,4 +20,6 @@ namespace PixelCrew.UI.Wigets.Editor
         }
         
     }
+
+    
 }

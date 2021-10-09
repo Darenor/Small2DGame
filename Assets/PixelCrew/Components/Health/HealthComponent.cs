@@ -18,27 +18,26 @@ namespace PixelCrew.Components
 
         public void ModifyHealth(int healthDelta)
         {
-            if (_health >= 1)
-            {
-                _health += healthDelta;
-                _onChange?.Invoke(_health);
+            if (_health <= 0) return;
+            
+            _health += healthDelta;
+            _onChange?.Invoke(_health);
 
-
-                if (healthDelta < 0)
-                {
-                    _onDamage?.Invoke();
-                }
-                if (healthDelta > 0)
-                {
-                    _onHeal?.Invoke();
-                }
-
-
-                if (_health <= 0)
-                {
-                    _onDie?.Invoke();
-                }
+            if (healthDelta < 0) 
+            { 
+                _onDamage?.Invoke();
+            } 
+            if (healthDelta > 0)
+            { 
+                _onHeal?.Invoke();
             }
+
+            
+            if (_health <= 0) 
+            { 
+                _onDie?.Invoke();
+            }
+            
         }
 
 #if UNITY_EDITOR 

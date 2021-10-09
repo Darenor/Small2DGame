@@ -9,6 +9,7 @@ using PixelCrew.Components;
 using PixelCrew.Utils;
 using PixelCrew.Model;
 using PixelCrew.Model.Data;
+using PixelCrew.Model.Defenitions;
 
 
 namespace PixelCrew.Creatures
@@ -30,6 +31,8 @@ namespace PixelCrew.Creatures
        [SerializeField] private int _superThrowParticles;
        [SerializeField] private float _superThrowDelay;
        [SerializeField] private ProbabilityDropComponent _hitDrop;
+       [SerializeField] private SpawnComponent _throwSpawner;
+
 
         private readonly Collider2D[] _ineractionResult = new Collider2D[1];
 
@@ -40,10 +43,27 @@ namespace PixelCrew.Creatures
         private static readonly int ThrowKey = Animator.StringToHash("throw");
         private static readonly int IsOnWall = Animator.StringToHash("is-on-wall");
 
+        private const string SwordId = "Sword";
+        private const string PotionId = "BigHealthPotion";
+
         private int CoinsCount => _session.Data.Inventory.Count("Coin");
 
     
-        private int SwordCount => _session.Data.Inventory.Count("Sword");
+        private int SwordCount => _session.Data.Inventory.Count(SwordId);
+        private int PotionCount => _session.Data.Inventory.Count(PotionId);
+
+        private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
+        private bool CanThrow
+        {
+            get
+            {
+                if (SelectedItemId == SwordId)
+                    return SwordCount > 1;
+                
+                var def = DefsFacade.I.Items.Get(SelectedItemId);
+                return def.HasTag(ItemTag.Throwable);
+            }
+        }
 
        
         public GameSession _session;
@@ -62,10 +82,10 @@ namespace PixelCrew.Creatures
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            var _health = GetComponent<HealthComponent>();
+            _health = GetComponent<HealthComponent>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
 
-            _health.SetHealth(_session.Data.Hp);
+            _health.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
         }
 
@@ -76,13 +96,13 @@ namespace PixelCrew.Creatures
 
         private void OnInventoryChanged(string id, int value)
         {
-            if (id == "Sword")
+            if (id == SwordId)
                 UpdateHeroWeapon();
         }
 
         public void OnHealthChanged(int currentHealth)
         {
-            _session.Data.Hp = currentHealth;
+            _session.Data.Hp.Value = currentHealth;
         }
 
 
@@ -209,7 +229,10 @@ namespace PixelCrew.Creatures
         {
             if (_superThrow)
             {
-                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
+                var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+                
+                var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
                 StartCoroutine( DoSuperThrow(numThrows));
             }
             else
@@ -234,9 +257,14 @@ namespace PixelCrew.Creatures
 
         private void ThrowAndRemoveFromInventory()
         {
-            _particles.Spawn("Throw");
-            _session.Data.Inventory.Remove("Sword", 1);
-            _sounds.Play("Range");
+                _sounds.Play("Range");
+
+                var throwableId = _session.QuickInventory.SelectedItem.Id;
+                var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
+                _throwSpawner.SetPrefab(throwableDef.Projectile);
+                _throwSpawner.Spawn();
+                
+                _session.Data.Inventory.Remove(throwableId, 1);
         }
 
         public void StartThrowing()
@@ -244,9 +272,31 @@ namespace PixelCrew.Creatures
            _superThrowCooldown.Reset();
         }
 
-        public void PerformThrowing()
+        public void UseInventory()
         {
-            if (!_throwCooldown.IsReady && SwordCount <= 1) return;
+
+            if (IsSelectedItem(ItemTag.Throwable))
+                PerformeThrowing();
+            else if (IsSelectedItem(ItemTag.Potion))
+                UsePotion();
+            
+        }
+        private void UsePotion()
+        {
+            var potion = DefsFacade.I.Potion.Get(SelectedItemId);
+            _session.Data.Hp.Value += (int)potion.Value;
+
+            _session.Data.Inventory.Remove(potion.Id, 1);
+        }
+
+        public bool IsSelectedItem(ItemTag tag)
+        {
+            return _session.QuickInventory.SelectedDef.HasTag(tag);
+        }
+
+        public void PerformeThrowing()
+        {
+            if (!_throwCooldown.IsReady && !CanThrow) return;
 
             if (_superThrowCooldown.IsReady) _superThrow = true;
 
@@ -254,16 +304,35 @@ namespace PixelCrew.Creatures
             _throwCooldown.Reset();
         }
 
-        public void UsePotion()
-        {
-            var poitionCount = _session.Data.Inventory.Count("HealthPotion");
-            if (poitionCount > 0)
-            {
-                _health.ModifyHealth(5);
-                _session.Data.Inventory.Remove("HealthPotion", 1);
-            }
-        }
+        // public void UsePotion()
+        // {
+        //     
+        //     if (CanUsePotion)
+        //     {
+        //         var potionId = _session.QuickInventory.SelectedItem.Id;
+        //         var potionDef = DefsFacade.I.Throwable.Get(potionId);
+        //         
+        //         //_health.ModifyHealth(10);
+        //         _session.Data.Inventory.Remove(potionId, 1);
+        //     }
+        // }
+        //
+        // private bool CanUsePotion
+        // {
+        //     get
+        //     {
+        //         if (SelectedItemId == PotionId)
+        //             return PotionCount > 0;
+        //         
+        //         var def = DefsFacade.I.Items.Get(SelectedItemId);
+        //         return def.HasTag(ItemTag.Usable);
+        //     }
+        // }
 
+        public void NextItem()
+        {
+            _session.QuickInventory.SetNextItem();
+        }
     }
 
 }

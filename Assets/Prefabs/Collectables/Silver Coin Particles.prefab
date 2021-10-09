@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7538391996646207021}
   - component: {fileID: 2806893673812520136}
   - component: {fileID: 3796000428089380976}
+  - component: {fileID: 4711875144682164340}
   m_Layer: 9
   m_Name: Silver Coin Particles
   m_TagString: Untagged
@@ -234,6 +235,17 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4711875144682164340}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3796000428089380976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,3 +260,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: Coin
   _count: 1
+--- !u!114 &4711875144682164340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492116298569435751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d0fcd58baf425d84fc1a488f0b5d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 36fdbbad8807fda41b84c700d59a0f4f, type: 3}

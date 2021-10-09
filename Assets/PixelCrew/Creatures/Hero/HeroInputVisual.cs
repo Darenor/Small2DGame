@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using PixelCrew.Creatures;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using PixelCrew.Creatures;
-using PixelCrew.Model.Data;
 
-namespace PixelCrew
+namespace PixelCrew.Creatures
 {
 
     public class HeroInputVisual : MonoBehaviour
@@ -60,14 +56,14 @@ namespace PixelCrew
 
             if (context.canceled)
             {
-                _hero.PerformThrowing();
+                _hero.UseInventory();
             }
         }
         
-        public void OnUse(InputAction.CallbackContext context)
+        public void OnNextItem(InputAction.CallbackContext context)
         {
             if (context.performed)
-                _hero.UsePotion();
+                _hero.NextItem();
         }
 
 

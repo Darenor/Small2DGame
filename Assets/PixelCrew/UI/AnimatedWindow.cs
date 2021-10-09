@@ -12,7 +12,7 @@ namespace PixelCrew.UI
 
 
 
-        private void Start()
+        protected virtual void Start()
         {
             _animator = GetComponent<Animator>();
 

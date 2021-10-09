@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PixelCrew.Creatures;
 using PixelCrew.Components;
+using PixelCrew.Model.Data.Properties;
 
 namespace PixelCrew.Model.Data
 {
@@ -12,7 +13,7 @@ namespace PixelCrew.Model.Data
     {
         [SerializeField] private InventoryData _inventory;
 
-        public int Hp;
+        public IntProperty Hp = new IntProperty();
         
 
         public InventoryData Inventory => _inventory;
@@ -22,12 +23,6 @@ namespace PixelCrew.Model.Data
             var json = JsonUtility.ToJson(this);
             return JsonUtility.FromJson<PlayerData>(json);
         }
-
-
-
-
-
-
     }
 
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using PixelCrew.Utils;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -48,7 +49,7 @@ namespace PixelCrew
 
         private void Spawn(GameObject particles)
         {
-            var instance = Instantiate(particles, transform.position, Quaternion.identity);
+            var instance = SpawnUtils.Spawn(particles, transform.position);
             var rigidBody = instance.GetComponent<Rigidbody2D>();
 
             var randomAngle = Random.Range(0, _sectorAngle);

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PixelCrew.UI.Wigets
+namespace PixelCrew.UI.Widgets
 {
     public class CustomButton : Button
     {
