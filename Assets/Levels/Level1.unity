@@ -4310,7 +4310,7 @@ MonoBehaviour:
       - Id: SmallHealthPotion
         Value: 1
       - Id: BigHealthPotion
-        Value: 1
+        Value: 2
     Hp:
       _value: 5
 --- !u!4 &1757377469
