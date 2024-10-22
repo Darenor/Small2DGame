@@ -22,7 +22,7 @@ MonoBehaviour:
     _tags: 010000000000000002000000
   - _id: Key
     _icon: {fileID: 21300000, guid: 3ee9c247e11b0184d998ad0ceb420e91, type: 3}
-    _tags: 
+    _tags: 0000000001000000
   - _id: BigHealthPotion
     _icon: {fileID: 3714227102187029162, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
     _tags: 0100000003000000

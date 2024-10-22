@@ -44,7 +44,7 @@ namespace PixelCrew.Model.Data
                 if (isAllRequirementsMet)
                     retValue.Add(item);
             }
-            return _inventory.ToArray();
+            return retValue.ToArray();
         }
 
         private void AddToStack(string id, int value)

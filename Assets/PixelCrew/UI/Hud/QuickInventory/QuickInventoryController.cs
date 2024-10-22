@@ -22,7 +22,6 @@ namespace PixelCrew.UI.Hud.QuickInventory
         {
             _session = FindObjectOfType<GameSession>();
             _trash.Retain(_session.QuickInventory.Subscribe(Rebuild));
-
             Rebuild();
         }
 
@@ -50,6 +49,11 @@ namespace PixelCrew.UI.Hud.QuickInventory
             {
                 _createdItem[i].gameObject.SetActive(false);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _trash.Dispose();
         }
     }
 }

@@ -116,6 +116,28 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
+  - _name: destroy
+    _sprites:
+    - {fileID: 6040734443530017722, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: 8167133005111728920, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: 2014349484240403859, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: 6326803469982491369, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1958807611155718607}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!58 &1958807611155718594
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -173,15 +195,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1958807611155718607}
-        m_MethodName: DestroyObject
-        m_Mode: 1
+      - m_Target: {fileID: 1958807611155718595}
+        m_MethodName: SetClip
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1958807611155718607

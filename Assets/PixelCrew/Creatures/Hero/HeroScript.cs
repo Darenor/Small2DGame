@@ -165,7 +165,8 @@ namespace PixelCrew.Creatures
 
         public void AddInInventory(string id, int value)
         {
-            _session.Data.Inventory.Add(id, value);
+            if(_session.Data.Inventory != null)
+                _session.Data.Inventory.Add(id, value);
         }    
 
         public override void TakeDamage()

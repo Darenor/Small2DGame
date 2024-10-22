@@ -102,15 +102,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frameRate: 10
   _clips:
-  - _name: 
+  - _name: idle
     _sprites:
-    - {fileID: 3714227102187029162, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
-    - {fileID: -6202940564662568092, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
-    - {fileID: -8747976068718324687, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
-    - {fileID: 7142050841817600938, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
-    - {fileID: -860807820763296739, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
-    - {fileID: -5249288142952506341, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
-    - {fileID: 1089735312403315716, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: 1185527514606905908, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: -1061600653231999548, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: -3065595510956808684, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: 6997616985800771554, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: 8618505411793156745, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: -1972361127685065434, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
+    - {fileID: -5226445311955339714, guid: 042d4fdb0abcf7a439d9be87bd6a4626, type: 3}
     _loop: 1
     _allowNextClip: 0
     _onComplete:
